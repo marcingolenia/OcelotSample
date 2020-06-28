@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  invoices-api:
+    build:
+      dockerfile: Invoices.Dockerfile
+      context: .
+    environment:
+      ENVIRONMENT: Docker
+    ports:
+      - "5002:80"
+  clients-api:
+    build:
+      dockerfile: Clients.Dockerfile
+      context: .
+    environment:
+      ENVIRONMENT: Docker
+    ports:
+      - "5001:80"
+  gateway-api:
+    build:
+      dockerfile: Gateway.Dockerfile
+      context: .
+    environment:
+      ENVIRONMENT: Docker
+    ports:
+      - "5000:80"
+    depends_on:
+      - clients-api
+      - invoices-api

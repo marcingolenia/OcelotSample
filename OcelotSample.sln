@@ -8,6 +8,7 @@ ProjectSection(SolutionItems) = preProject
 	.dockerignore = .dockerignore
 	Invoices.Dockerfile = Invoices.Dockerfile
 	Clients.Dockerfile = Clients.Dockerfile
+	docker-compose.yml = docker-compose.yml
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicesApi", "InvoicesApi\InvoicesApi.csproj", "{C1591E30-819E-4645-A5AC-BD7CE29656A8}"
