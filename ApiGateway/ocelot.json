@@ -10,7 +10,8 @@
         }
       ],
       "UpstreamPathTemplate": "/invoices",
-      "UpstreamHttpMethod": ["Get"]
+      "UpstreamHttpMethod": ["Get"],
+      "Key": "list_invoices"
     },
     {
       "DownstreamPathTemplate": "/clients",
@@ -22,7 +23,17 @@
         }
       ],
       "UpstreamPathTemplate": "/clients",
-      "UpstreamHttpMethod": ["Get"]
+      "UpstreamHttpMethod": ["Get"],
+      "Key": "list_clients"
+    }
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "list_clients",
+        "list_invoices"
+      ],
+      "UpstreamPathTemplate": "/list_all"
     }
   ],
   "GlobalConfiguration": {}
