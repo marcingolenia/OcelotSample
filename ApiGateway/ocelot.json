@@ -5,15 +5,25 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5002
+          "Host": "invoices-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/invoices",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": ["Get"]
+    },
+    {
+      "DownstreamPathTemplate": "/clients",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "clients-api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/clients",
+      "UpstreamHttpMethod": ["Get"]
     }
   ],
-  "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:80"
-  }
+  "GlobalConfiguration": {}
 }
