@@ -15,8 +15,19 @@ namespace ClientsApi.Controllers
             {
                 Id = index,
                 Address = "New York City",
-                Name = "Trump Tower",
+                Name = $"Trump Tower {index}",
                 VatId = Guid.NewGuid().ToString()
             });
+        
+        [HttpGet]
+        [Route("{id}")]
+        public ClientDto Get(int id) =>
+             new ClientDto
+            {
+                Id = id,
+                Address = "New York City",
+                Name = "Trump Tower",
+                VatId = Guid.NewGuid().ToString()
+            };
     }
 }

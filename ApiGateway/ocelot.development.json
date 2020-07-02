@@ -1,0 +1,81 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/invoices",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/invoices",
+      "UpstreamHttpMethod": ["Get"],
+      "Key": "invoices"
+    },
+    {
+      "DownstreamPathTemplate": "/invoices/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/invoices/{id}",
+      "UpstreamHttpMethod": ["Get"],
+      "Key": "client-invoices"
+    },
+    {
+      "DownstreamPathTemplate": "/clients",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/clients",
+      "UpstreamHttpMethod": ["Get"],
+      "Key": "clients"
+    },
+    {
+      "DownstreamPathTemplate": "/clients/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/clients/{id}",
+      "UpstreamHttpMethod": ["Get"],
+      "Key": "client-data"
+    }
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "clients",
+        "invoices"
+      ],
+      "UpstreamPathTemplate": "/clients_and_invoices"
+    },
+    {
+      "RouteKeys": [
+        "client-data",
+        "client-invoices"
+      ],
+      "UpstreamPathTemplate": "/client_invoices/{id}"
+    },
+    {
+      "RouteKeys": [
+        "client-data",
+        "client-invoices"
+      ],
+      "UpstreamPathTemplate": "/client_invoices_pretty/{id}",
+      "Aggregator": "ClientsInvoicesAggregator"
+    }
+  ],
+  "GlobalConfiguration": {}
+}
